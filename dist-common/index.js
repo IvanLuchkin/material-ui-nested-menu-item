@@ -38,7 +38,7 @@ const useMenuItemStyles = styles_1.makeStyles((theme) => ({
  * menu elements as children to this component.
  */
 const NestedMenuItem = react_1.default.forwardRef(function NestedMenuItem(props, ref) {
-    const { parentMenuOpen, component = 'div', label, rightIcon = react_1.default.createElement(ArrowRight_1.default, null), children, className, tabIndex: tabIndexProp, MenuProps = {}, ContainerProps: ContainerPropsProp = {} } = props, MenuItemProps = __rest(props, ["parentMenuOpen", "component", "label", "rightIcon", "children", "className", "tabIndex", "MenuProps", "ContainerProps"]);
+    const { parentMenuOpen, component = 'div', label, rightIcon = react_1.default.createElement(ArrowRight_1.default, null), children, className, tabIndex: tabIndexProp, MenuProps, ContainerProps: ContainerPropsProp = {} } = props, MenuItemProps = __rest(props, ["parentMenuOpen", "component", "label", "rightIcon", "children", "className", "tabIndex", "MenuProps", "ContainerProps"]);
     const { ref: containerRefProp } = ContainerPropsProp, ContainerProps = __rest(ContainerPropsProp, ["ref"]);
     const menuItemRef = react_1.useRef(null);
     react_1.useImperativeHandle(ref, () => menuItemRef.current);

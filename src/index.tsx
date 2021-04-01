@@ -63,7 +63,7 @@ const NestedMenuItem = React.forwardRef<
     children,
     className,
     tabIndex: tabIndexProp,
-    MenuProps = {},
+    MenuProps,
     ContainerProps: ContainerPropsProp = {},
     ...MenuItemProps
   } = props
