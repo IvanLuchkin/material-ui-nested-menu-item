@@ -1,23 +1,4 @@
 "use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
 var __rest = (this && this.__rest) || function (s, e) {
     var t = {};
     for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
@@ -28,6 +9,13 @@ var __rest = (this && this.__rest) || function (s, e) {
                 t[p[i]] = s[p[i]];
         }
     return t;
+};
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
 };
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
@@ -59,14 +47,16 @@ const NestedMenuItem = react_1.default.forwardRef(function NestedMenuItem(props,
     const menuContainerRef = react_1.useRef(null);
     const [isSubMenuOpen, setIsSubMenuOpen] = react_1.useState(false);
     const handleMouseEnter = (event) => {
+        var _a;
         setIsSubMenuOpen(true);
-        if (ContainerProps === null || ContainerProps === void 0 ? void 0 : ContainerProps.onMouseEnter) {
+        if ((_a = ContainerProps) === null || _a === void 0 ? void 0 : _a.onMouseEnter) {
             ContainerProps.onMouseEnter(event);
         }
     };
     const handleMouseLeave = (event) => {
+        var _a;
         setIsSubMenuOpen(false);
-        if (ContainerProps === null || ContainerProps === void 0 ? void 0 : ContainerProps.onMouseLeave) {
+        if ((_a = ContainerProps) === null || _a === void 0 ? void 0 : _a.onMouseLeave) {
             ContainerProps.onMouseLeave(event);
         }
     };
@@ -74,7 +64,7 @@ const NestedMenuItem = react_1.default.forwardRef(function NestedMenuItem(props,
     const isSubmenuFocused = () => {
         var _a, _b, _c, _d;
         const active = (_b = (_a = containerRef.current) === null || _a === void 0 ? void 0 : _a.ownerDocument) === null || _b === void 0 ? void 0 : _b.activeElement;
-        for (const child of (_d = (_c = menuContainerRef.current) === null || _c === void 0 ? void 0 : _c.children) !== null && _d !== void 0 ? _d : []) {
+        for (const child of (_d = (_c = menuContainerRef.current) === null || _c === void 0 ? void 0 : _c.children, (_d !== null && _d !== void 0 ? _d : []))) {
             if (child === active) {
                 return true;
             }
@@ -82,15 +72,16 @@ const NestedMenuItem = react_1.default.forwardRef(function NestedMenuItem(props,
         return false;
     };
     const handleFocus = (event) => {
+        var _a;
         if (event.target === containerRef.current) {
             setIsSubMenuOpen(true);
         }
-        if (ContainerProps === null || ContainerProps === void 0 ? void 0 : ContainerProps.onFocus) {
+        if ((_a = ContainerProps) === null || _a === void 0 ? void 0 : _a.onFocus) {
             ContainerProps.onFocus(event);
         }
     };
     const handleKeyDown = (event) => {
-        var _a, _b, _c, _d;
+        var _a, _b, _c, _d, _e;
         if (event.key === 'Escape') {
             return;
         }
@@ -105,7 +96,7 @@ const NestedMenuItem = react_1.default.forwardRef(function NestedMenuItem(props,
             event.target === containerRef.current &&
             event.target === active) {
             const firstChild = (_d = menuContainerRef.current) === null || _d === void 0 ? void 0 : _d.children[0];
-            firstChild === null || firstChild === void 0 ? void 0 : firstChild.focus();
+            (_e = firstChild) === null || _e === void 0 ? void 0 : _e.focus();
         }
     };
     const open = isSubMenuOpen && parentMenuOpen;
@@ -119,13 +110,7 @@ const NestedMenuItem = react_1.default.forwardRef(function NestedMenuItem(props,
         react_1.default.createElement(MenuItem_1.default, Object.assign({}, MenuItemProps, { className: clsx_1.default(menuItemClasses.root, className), ref: menuItemRef }),
             label,
             rightIcon),
-        react_1.default.createElement(Menu_1.default
-        // Set pointer events to 'none' to prevent the invisible Popover div
-        // from capturing events for clicks and hovers
-        , { 
-            // Set pointer events to 'none' to prevent the invisible Popover div
-            // from capturing events for clicks and hovers
-            style: { pointerEvents: 'none' }, anchorEl: menuItemRef.current, anchorOrigin: {
+        react_1.default.createElement(Menu_1.default, Object.assign({ style: { pointerEvents: 'auto' }, anchorEl: menuItemRef.current, anchorOrigin: {
                 vertical: 'top',
                 horizontal: 'right'
             }, transformOrigin: {
@@ -133,7 +118,7 @@ const NestedMenuItem = react_1.default.forwardRef(function NestedMenuItem(props,
                 horizontal: 'left'
             }, open: open, autoFocus: false, disableAutoFocus: true, disableEnforceFocus: true, onClose: () => {
                 setIsSubMenuOpen(false);
-            } },
+            } }, MenuProps),
             react_1.default.createElement("div", { ref: menuContainerRef, style: { pointerEvents: 'auto' } }, children))));
 });
 exports.default = NestedMenuItem;

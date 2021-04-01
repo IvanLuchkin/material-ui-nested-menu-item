@@ -171,9 +171,7 @@ const NestedMenuItem = React.forwardRef<
         {rightIcon}
       </MenuItem>
       <Menu
-        // Set pointer events to 'none' to prevent the invisible Popover div
-        // from capturing events for clicks and hovers
-        style={{pointerEvents: 'none'}}
+        style={{pointerEvents: 'auto'}}
         anchorEl={menuItemRef.current}
         anchorOrigin={{
           vertical: 'top',
@@ -190,6 +188,7 @@ const NestedMenuItem = React.forwardRef<
         onClose={() => {
           setIsSubMenuOpen(false)
         }}
+        {...MenuProps}
       >
         <div ref={menuContainerRef} style={{pointerEvents: 'auto'}}>
           {children}
